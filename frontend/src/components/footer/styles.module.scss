@@ -1,4 +1,4 @@
-@import "../../styles/break-points.scss";
+@use "../../styles/break-points.scss";
 
 .container {
   h5 {
@@ -9,7 +9,7 @@
     display: flex;
     justify-content: space-between;
 
-    @media (max-width: $breakpoint__lg) {
+    @media (max-width: break-points.$breakpoint__lg) {
       text-align: center;
     }
 
@@ -17,7 +17,7 @@
       display: flex;
       gap: var(--pico-spacing);
 
-      @media (max-width: $breakpoint__lg) {
+      @media (max-width: break-points.$breakpoint__lg) {
         display: none;
       }
     }
@@ -34,7 +34,7 @@
       i {
         font-size: 48px;
 
-        @media (max-width: $breakpoint__lg) {
+        @media (max-width: break-points.$breakpoint__lg) {
           font-size: 32px;
         }
       }
