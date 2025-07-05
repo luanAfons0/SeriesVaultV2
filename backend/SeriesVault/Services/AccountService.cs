@@ -12,6 +12,8 @@ public class AccountService(SeriesVaultV2DBContext seriesVaultDbContext)
 
     public async Task CreateAccount(Account account)
     {
+        account.password = BCryptService.HashAccountPassword(account.password);
+        
         seriesVaultDbContext.Accounts.Add(account);
         await seriesVaultDbContext.SaveChangesAsync();
     }
