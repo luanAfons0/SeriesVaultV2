@@ -28,11 +28,16 @@ export const Footer = component$(() => {
         <div class={styles.icons}>
           <Link
             target="_blank"
-            href="https://www.linkedin.com/in/luan-henrique-afonso-881154280/"
+            href="https://www.linkedin.com/in/luan-henrique-afonso-881154280"
+            aria-label="Check out my Linkedin"
           >
             <i class="fa fa-linkedin-square" />
           </Link>
-          <Link target="_blank" href="https://github.com/luanAfons0">
+          <Link
+            target="_blank"
+            href="https://github.com/luanAfons0"
+            aria-label="Check out my GitHub"
+          >
             <i class="fa fa-github-square" />
           </Link>
         </div>
