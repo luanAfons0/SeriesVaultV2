@@ -15,4 +15,13 @@ public class AccountService(SeriesVaultV2DBContext seriesVaultDbContext)
         seriesVaultDbContext.Accounts.Add(account);
         await seriesVaultDbContext.SaveChangesAsync();
     }
+
+    public Boolean ValidateEmail(String email)
+    {
+        Account? account = seriesVaultDbContext.Accounts.Where(account => account.email == email).FirstOrDefault();
+
+        if (account is null) return true;
+
+        return false;
+    }
 }
