@@ -1,6 +1,7 @@
 import { component$, isDev } from "@builder.io/qwik";
 import { QwikCityProvider, RouterOutlet } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
+import { Toaster } from "qwik-sonner";
 
 import "./styles/global.scss";
 
@@ -33,6 +34,15 @@ export default component$(() => {
         <RouterHead />
       </head>
       <body lang="en">
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            style: {
+              backgroundColor: "rgb(19, 22.5, 30.5)",
+              color: "#ffffff",
+            },
+          }}
+        />
         <RouterOutlet />
       </body>
     </QwikCityProvider>
