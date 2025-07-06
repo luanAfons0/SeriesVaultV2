@@ -1,3 +1,4 @@
+import { TbBrandGithub, TbBrandLinkedin } from "@qwikest/icons/tablericons";
 import { component$ } from "@builder.io/qwik";
 import styles from "./styles.module.scss";
 import { Link } from "@builder.io/qwik-city";
@@ -31,14 +32,14 @@ export const Footer = component$(() => {
             href="https://www.linkedin.com/in/luan-henrique-afonso-881154280"
             aria-label="Check out my Linkedin"
           >
-            <i class="ti ti-brand-linkedin" />
+            <TbBrandLinkedin />
           </Link>
           <Link
             target="_blank"
             href="https://github.com/luanAfons0"
             aria-label="Check out my GitHub"
           >
-            <i class="ti ti-brand-github" />
+            <TbBrandGithub />
           </Link>
         </div>
         <hr />

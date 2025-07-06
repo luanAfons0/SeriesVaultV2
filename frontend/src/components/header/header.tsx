@@ -1,6 +1,7 @@
 import { $, component$, useOnDocument, useSignal } from "@builder.io/qwik";
 import styles from "./styles.module.scss";
 import { Link } from "@builder.io/qwik-city";
+import { TbSun, TbMoon } from "@qwikest/icons/tablericons";
 
 export const Header = component$(() => {
   const $htmlElement = useSignal<HTMLElement | null>(null);
@@ -46,11 +47,7 @@ export const Header = component$(() => {
           class={`${getButtonColor()} ${styles.themeButton}`}
           onClick$={() => handleSwitchTheme()}
         >
-          {theme.value == "dark" ? (
-            <i class="ti ti-sun" />
-          ) : (
-            <i class="ti ti-moon" />
-          )}
+          {theme.value == "dark" ? <TbSun /> : <TbMoon />}
         </button>
       </div>
     </header>
