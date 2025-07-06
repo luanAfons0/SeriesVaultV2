@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddScoped<AccountService, AccountService>();
+builder.Services.AddScoped<AuthorizationService, AuthorizationService>();
 
 // Configure the Data Base connection and implements the DB service
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

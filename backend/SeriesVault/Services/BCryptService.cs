@@ -1,6 +1,5 @@
 ﻿namespace SeriesVault.Services;
 
-using BCrypt.Net;
 using static BCrypt.Net.BCrypt;
 
 public class BCryptService
@@ -10,5 +9,10 @@ public class BCryptService
     public static string HashAccountPassword(string password)
     {
         return HashPassword(password, WorkFactor);
+    }
+
+    public static Boolean ValidatePassword(string password, string hashedPassword)
+    {
+        return Verify(password, hashedPassword);
     }
 }

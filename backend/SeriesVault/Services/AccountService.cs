@@ -10,6 +10,12 @@ public class AccountService(SeriesVaultV2DBContext seriesVaultDbContext)
         return seriesVaultDbContext.Accounts.Find(id);
     }
 
+    public Account GetAccountByEmail(string email)
+    {
+        Account? account = seriesVaultDbContext.Accounts.Where(account => account.email == email).FirstOrDefault();
+        return account;
+    }
+
     public async Task CreateAccount(Account account)
     {
         account.password = BCryptService.HashAccountPassword(account.password);
