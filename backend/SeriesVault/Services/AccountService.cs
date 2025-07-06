@@ -1,35 +1,23 @@
 ﻿using SeriesVault.Data;
 using SeriesVault.Models;
+using SeriesVault.Repositories;
 
 namespace SeriesVault.Services;
 
-public class AccountService(SeriesVaultV2DBContext seriesVaultDbContext)
+public class AccountService(AccountRepository accountRepository)
 {
     public Account? GetAccountById(int id)
     {
-        return seriesVaultDbContext.Accounts.Find(id);
+        return accountRepository.GetAccountById(id);
     }
 
-    public Account GetAccountByEmail(string email)
+    public Account? GetAccountByEmail(string email)
     {
-        Account? account = seriesVaultDbContext.Accounts.Where(account => account.email == email).FirstOrDefault();
-        return account;
+        return accountRepository.GetAccountByEmail(email);
     }
 
-    public async Task CreateAccount(Account account)
+    public void CreateAccount(Account account)
     {
-        account.password = BCryptService.HashAccountPassword(account.password);
-        
-        seriesVaultDbContext.Accounts.Add(account);
-        await seriesVaultDbContext.SaveChangesAsync();
-    }
-
-    public Boolean ValidateEmail(String email)
-    {
-        Account? account = seriesVaultDbContext.Accounts.Where(account => account.email == email).FirstOrDefault();
-
-        if (account is null) return true;
-
-        return false;
+        _ = accountRepository.CreateAccount(account);
     }
 }

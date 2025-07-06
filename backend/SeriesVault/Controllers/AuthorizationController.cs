@@ -11,16 +11,22 @@ public class AuthorizationController(AuthorizationService authorizationService, 
     [HttpPost("login")]
     public ActionResult Login(LoginRequest account)
     {
-        Account dbAccount = accountService.GetAccountByEmail(account.email);
+        try
+        {
+            Account? dbAccount = accountService.GetAccountByEmail(account.email);
 
-        if (dbAccount is null)
-            return NotFound();
+            if (dbAccount is null)  return NotFound();
         
-        Boolean isPasswordValid = BCryptService.ValidatePassword(account.password, dbAccount.password);
+            Boolean isPasswordValid = BCryptService.ValidatePassword(account.password, dbAccount.password);
 
-        if (!isPasswordValid)
-            return BadRequest();
+            if (!isPasswordValid) return Unauthorized();
         
-        return Ok(new LoginDTO(authorizationService.CreateJwt(dbAccount)));
+            return Ok(new LoginDTO(authorizationService.CreateJwt(dbAccount)));
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
     }
 }

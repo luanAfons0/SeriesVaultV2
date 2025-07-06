@@ -2,5 +2,5 @@
 
 public class IsEmailValidRequest
 {
-    public String email { get; set; }
+    public required String email { get; set; }
 }

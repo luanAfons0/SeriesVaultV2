@@ -10,7 +10,10 @@ public class AuthorizationService(IConfiguration config)
 {
     public string CreateJwt(Account account )
     {
-        string secretKey = config["JWT:SecretKey"];
+        string? secretKey = config["JWT:SecretKey"];
+        
+        if(secretKey is null) throw new Exception("JWT:SecretKey is missing");
+        
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
         
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);

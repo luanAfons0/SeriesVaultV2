@@ -7,17 +7,25 @@ namespace SeriesVault.Controllers;
 
 [ApiController]
 [Route("api/")]
-public class ValidationController(AccountService accountService): ControllerBase
+public class ValidationController(ValidationService validationService): ControllerBase
 {
     
     [HttpPost("validate/email")]
-    public ActionResult<IsEmailValidDTO> UpdateAccount([FromBody] IsEmailValidRequest request)
+    public ActionResult<IsEmailValidDTO> ValidateEmail([FromBody] IsEmailValidRequest request)
     {
-        if (request is null)
-            return BadRequest();
+        try
+        {
+            if (request is null) return BadRequest();
             
-        var isEmailValid = accountService.ValidateEmail(request.email);
+            Boolean isEmailValid = validationService.ValidateEmail(request.email);
 
-        return Ok(new IsEmailValidDTO(isEmailValid));
+            return Ok(new IsEmailValidDTO(isEmailValid));
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+        
     }
 }

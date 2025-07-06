@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using SeriesVault.Data;
+using SeriesVault.Repositories;
 using SeriesVault.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,8 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddScoped<AccountService, AccountService>();
 builder.Services.AddScoped<AuthorizationService, AuthorizationService>();
+builder.Services.AddScoped<AccountRepository, AccountRepository>();
+builder.Services.AddScoped<ValidationService, ValidationService>();
 
 // Configure the Data Base connection and implements the DB service
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
