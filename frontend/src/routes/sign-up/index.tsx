@@ -71,7 +71,7 @@ export default component$(() => {
 
   const handleSubmit: QRL<SubmitHandler<SignUpForm>> = $(async (values, _) => {
     const response = await fetch(
-      `${import.meta.env.PUBLIC_API_URL}/account/validate-email`,
+      `${import.meta.env.PUBLIC_API_URL}/validate/email`,
       {
         method: "POST",
         mode: "cors",
