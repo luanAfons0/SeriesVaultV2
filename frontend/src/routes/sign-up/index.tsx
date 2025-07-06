@@ -38,7 +38,7 @@ export const useFormLoader = routeLoader$<InitialValues<SignUpForm>>(() => ({
 }));
 
 export const useFormAction = formAction$<SignUpForm>(
-  (_) => {},
+  () => {},
   valiForm$(SignUpSchema)
 );
 
@@ -69,7 +69,7 @@ export default component$(() => {
     }
   });
 
-  const handleSubmit: QRL<SubmitHandler<SignUpForm>> = $(async (values, _) => {
+  const handleSubmit: QRL<SubmitHandler<SignUpForm>> = $(async (values) => {
     const response = await fetch(
       `${import.meta.env.PUBLIC_API_URL}/validate/email`,
       {
@@ -116,7 +116,7 @@ export default component$(() => {
                       aria-describedby="invalid-first-name"
                       aria-invalid={
                         field.touched
-                          ? field.error || (field.value as String).length <= 0
+                          ? field.error || (field.value ?? "").length <= 0
                             ? "true"
                             : "false"
                           : "spelling"

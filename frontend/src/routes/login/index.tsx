@@ -1,9 +1,120 @@
-import { component$ } from "@builder.io/qwik";
-import { DocumentHead } from "@builder.io/qwik-city";
-import { LoginBox } from "~/components/login-box/login-box";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-wrapper-object-types */
+import { $, component$, QRL } from "@builder.io/qwik";
+import { DocumentHead, Link, routeLoader$ } from "@builder.io/qwik-city";
+import styles from "./styles.module.scss";
+import * as v from "valibot";
+import {
+  formAction$,
+  InitialValues,
+  SubmitHandler,
+  useForm,
+  valiForm$,
+} from "@modular-forms/qwik";
+
+const LogInSchema = v.object({
+  email: v.pipe(
+    v.string(),
+    v.nonEmpty("Please enter your email."),
+    v.email("The email address is badly formatted.")
+  ),
+  password: v.pipe(
+    v.string(),
+    v.nonEmpty("Please enter your password."),
+    v.minLength(8, "Your password must have 8 characters or more.")
+  ),
+});
+
+type LogInForm = v.InferInput<typeof LogInSchema>;
+
+export const useFormLoader = routeLoader$<InitialValues<LogInForm>>(() => ({
+  email: "",
+  password: "",
+}));
+
+export const useFormAction = formAction$<LogInForm>(
+  (_) => {},
+  valiForm$(LogInSchema)
+);
 
 export default component$(() => {
-  return <LoginBox />;
+  const [_, { Form, Field }] = useForm<LogInForm>({
+    loader: useFormLoader(),
+    action: useFormAction(),
+    validate: valiForm$(LogInSchema),
+  });
+
+  const handleSubmit: QRL<SubmitHandler<LogInForm>> = $(async (values) => {
+    console.log(values);
+  });
+
+  return (
+    <div class={styles.container}>
+      <article>
+        <Form onSubmit$={handleSubmit}>
+          <header>
+            <Link href="/" aria-label="Go to the home page">
+              SeriesVault
+            </Link>
+          </header>
+          <fieldset>
+            <Field name="email">
+              {(field, props) => (
+                <label>
+                  Email
+                  <input
+                    {...props}
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    autocomplete="email"
+                    aria-describedby="invalid-email"
+                    aria-invalid={
+                      field.touched
+                        ? field.error || (field.value as String).length <= 0
+                          ? "true"
+                          : "false"
+                        : "spelling"
+                    }
+                  />
+                  {field.error && (
+                    <small id="invalid-email">{field.error}</small>
+                  )}
+                </label>
+              )}
+            </Field>
+            <Field name="password">
+              {(field, props) => (
+                <label>
+                  Password
+                  <input
+                    {...props}
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    aria-label="Password"
+                    autocomplete="current-password"
+                    aria-describedby="invalid-password"
+                    aria-invalid={
+                      field.touched
+                        ? field.error || (field.value ?? "").length <= 0
+                          ? "true"
+                          : "false"
+                        : "spelling"
+                    }
+                  />
+                  {field.error && (
+                    <small id="invalid-password">{field.error}</small>
+                  )}
+                </label>
+              )}
+            </Field>
+            <input type="submit" value="Log in" />
+          </fieldset>
+        </Form>
+      </article>
+    </div>
+  );
 });
 
 export const head: DocumentHead = {
