@@ -1,3 +1,5 @@
+@use "../../styles/break-points.scss";
+
 .container {
   display: flex;
   justify-content: space-between;
@@ -11,17 +13,36 @@
     text-decoration: none;
   }
 
-  .buttonRow {
-    display: flex;
-    gap: var(--pico-spacing);
-    align-items: center;
+  details {
+    margin: 0;
 
-    .themeButton {
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 36px;
+        height: 36px;
+
+        @media (max-width: break-points.$breakpoint__lg) {
+          font-size: 32px;
+        }
+      }
+    }
+
+    li {
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 100%;
-      padding: calc(var(--pico-spacing) / 2);
     }
+  }
+
+  .themeButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    padding: calc(var(--pico-spacing) / 2);
   }
 }
