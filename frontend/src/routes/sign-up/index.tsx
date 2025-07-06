@@ -111,7 +111,6 @@ export default component$(() => {
                     First name
                     <input
                       {...props}
-                      value={field.value}
                       placeholder="First name"
                       autocomplete="given-name"
                       aria-describedby="invalid-first-name"
@@ -135,7 +134,6 @@ export default component$(() => {
                     Last name
                     <input
                       {...props}
-                      value={field.value}
                       placeholder="Last name"
                       autocomplete="given-name"
                       aria-describedby="invalid-second-name"
@@ -160,7 +158,6 @@ export default component$(() => {
                   Email
                   <input
                     {...props}
-                    value={field.value}
                     type="email"
                     placeholder="Email"
                     autocomplete="email"
@@ -185,7 +182,6 @@ export default component$(() => {
                   Password
                   <input
                     {...props}
-                    value={field.value}
                     type="password"
                     placeholder="Password"
                     aria-label="Password"
