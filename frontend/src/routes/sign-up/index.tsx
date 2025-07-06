@@ -64,7 +64,7 @@ export default component$(() => {
     if (response.status >= 200 && response.status < 400) {
       toast.success("Account created!");
       setTimeout(() => {
-        navigate("/login");
+        navigate("/login/");
       }, 1500);
     }
   });
@@ -214,7 +214,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "SeriesVault | Sign up",
+  title: "Series Vault | Sign up",
   meta: [
     {
       name: "description",

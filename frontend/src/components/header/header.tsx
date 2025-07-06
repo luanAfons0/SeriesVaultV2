@@ -37,15 +37,16 @@ export const Header = component$(() => {
         <h2>SeriesVault</h2>
       </Link>
       <div class={styles.buttonRow}>
-        <Link href="/login" aria-label="Go to te login page">
+        <Link href="/login/" aria-label="Go to te login page">
           <button class="secondary">Login</button>
         </Link>
-        <Link href="/sign-up" aria-label="Go to the sign up page">
+        <Link href="/sign-up/" aria-label="Go to the sign up page">
           <button>Sign up</button>
         </Link>
         <button
           class={`${getButtonColor()} ${styles.themeButton}`}
           onClick$={() => handleSwitchTheme()}
+          aria-label="changeTheme"
         >
           {theme.value == "dark" ? <TbSun /> : <TbMoon />}
         </button>

@@ -16,7 +16,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "SeriesVault | Home",
+  title: "Series Vault | Home",
   meta: [
     {
       name: "description",

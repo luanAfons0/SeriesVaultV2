@@ -9,16 +9,16 @@ export const Footer = component$(() => {
       <hr />
       <div class={styles.flex}>
         <div>
-          <h5>It&rsquo;s time to ditch the text file.</h5>
-          <h6 class="contrast">
-            Keep track of your anime easily by creating your own list.
-          </h6>
+          <p class={styles.text}>It&rsquo;s time to ditch the text file.</p>
+          <small class="contrast">
+            Keep track of your serie easily by creating your own list.
+          </small>
         </div>
         <div class={styles.buttonRow}>
-          <Link href="/login">
+          <Link href="/login/">
             <button class="secondary">Login</button>
           </Link>
-          <Link href="/sign-up">
+          <Link href="/sign-up/">
             <button>Sign up</button>
           </Link>
         </div>
