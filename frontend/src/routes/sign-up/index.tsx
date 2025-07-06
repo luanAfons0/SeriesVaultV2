@@ -74,9 +74,7 @@ export default component$(() => {
       `${import.meta.env.PUBLIC_API_URL}/validate/email`,
       {
         method: "POST",
-        mode: "cors",
         headers: {
-          Accept: "*/*",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -84,6 +82,7 @@ export default component$(() => {
         }),
       }
     );
+
     const data = await response.json();
 
     if (data.isValid == false) {
@@ -102,6 +101,7 @@ export default component$(() => {
             <Link href="/" aria-label="Go to the home page">
               SeriesVault
             </Link>
+            <hr />
           </header>
           <fieldset>
             <div class="grid">

@@ -1,7 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-wrapper-object-types */
 import { $, component$, QRL } from "@builder.io/qwik";
-import { DocumentHead, Link, routeLoader$ } from "@builder.io/qwik-city";
+import {
+  DocumentHead,
+  Link,
+  routeLoader$,
+  useNavigate,
+} from "@builder.io/qwik-city";
 import styles from "./styles.module.scss";
 import * as v from "valibot";
 import {
@@ -11,6 +16,7 @@ import {
   useForm,
   valiForm$,
 } from "@modular-forms/qwik";
+import { toast } from "qwik-sonner";
 
 const LogInSchema = v.object({
   email: v.pipe(
@@ -44,8 +50,26 @@ export default component$(() => {
     validate: valiForm$(LogInSchema),
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit: QRL<SubmitHandler<LogInForm>> = $(async (values) => {
-    console.log(values);
+    const response = await fetch(`${import.meta.env.PUBLIC_API_URL}/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+
+    if (response.status >= 400) {
+      toast.error("An error occurred, please verify the values and try again.");
+      return;
+    }
+
+    toast.success("Login successfully!");
+    setTimeout(() => {
+      navigate("/");
+    }, 1500);
   });
 
   return (
@@ -56,6 +80,7 @@ export default component$(() => {
             <Link href="/" aria-label="Go to the home page">
               SeriesVault
             </Link>
+            <hr />
           </header>
           <fieldset>
             <Field name="email">
