@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SeriesVault.DTOs.Account;
 using SeriesVault.Models;
-using SeriesVault.Requests.Account;
 using SeriesVault.Services;
 using static System.Int32;
 
@@ -31,17 +29,6 @@ namespace SeriesVault.Controllers
             await accountService.CreateAccount(account);
             
             return CreatedAtAction(nameof(CreateAccount), new { id = account.id }, account);
-        }
-
-        [HttpPost("account/validate-email")]
-        public ActionResult<IsEmailValidDTO> UpdateAccount([FromBody] IsEmailValidRequest request)
-        {
-            if (request is null)
-                return BadRequest();
-            
-            var isEmailValid = accountService.ValidateEmail(request.email);
-
-            return Ok(new IsEmailValidDTO(isEmailValid));
         }
     }
 }
