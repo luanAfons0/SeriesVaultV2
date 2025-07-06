@@ -14,5 +14,14 @@
   .buttonRow {
     display: flex;
     gap: var(--pico-spacing);
+    align-items: center;
+
+    .themeButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 100%;
+      padding: calc(var(--pico-spacing) / 2);
+    }
   }
 }

@@ -23,6 +23,7 @@ export default function (opts: RenderToStreamOptions) {
     containerAttributes: {
       lang: "en-us",
       ...opts.containerAttributes,
+      "data-theme": "dark",
     },
     serverData: {
       ...opts.serverData,

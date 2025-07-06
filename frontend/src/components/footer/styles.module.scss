@@ -31,6 +31,10 @@
       gap: calc(var(--pico-spacing) / 2);
       justify-content: center;
 
+      a {
+        text-decoration: none;
+      }
+
       i {
         font-size: 48px;
 

@@ -31,14 +31,14 @@ export const Footer = component$(() => {
             href="https://www.linkedin.com/in/luan-henrique-afonso-881154280"
             aria-label="Check out my Linkedin"
           >
-            <i class="fa fa-linkedin-square" />
+            <i class="ti ti-brand-linkedin" />
           </Link>
           <Link
             target="_blank"
             href="https://github.com/luanAfons0"
             aria-label="Check out my GitHub"
           >
-            <i class="fa fa-github-square" />
+            <i class="ti ti-brand-github" />
           </Link>
         </div>
         <hr />
