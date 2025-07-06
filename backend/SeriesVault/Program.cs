@@ -20,6 +20,12 @@ if (connectionString != null)
 
 var app = builder.Build();
 
+// Cors configuration
+app.UseCors(builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
