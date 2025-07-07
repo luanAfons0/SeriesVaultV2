@@ -1,7 +1,6 @@
 import { $, component$, useOnDocument, useSignal } from "@builder.io/qwik";
-import styles from "./styles.module.scss";
-import { Link } from "@builder.io/qwik-city";
 import { TbSun, TbMoon, TbMenu2 } from "@qwikest/icons/tablericons";
+import { Link } from "@builder.io/qwik-city";
 
 export const Header = component$(() => {
   const $htmlElement = useSignal<HTMLElement | null>(null);
@@ -32,7 +31,7 @@ export const Header = component$(() => {
   };
 
   return (
-    <header class={styles.container}>
+    <header>
       <Link href="/" aria-label="Go to the home page">
         <h2>SeriesVault</h2>
       </Link>
@@ -53,7 +52,7 @@ export const Header = component$(() => {
           </li>
           <li>
             <button
-              class={`${getButtonColor()} ${styles.themeButton}`}
+              class={`${getButtonColor()}`}
               onClick$={() => handleSwitchTheme()}
               aria-label="changeTheme"
             >

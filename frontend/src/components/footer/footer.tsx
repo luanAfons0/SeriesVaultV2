@@ -1,20 +1,19 @@
 import { TbBrandGithub, TbBrandLinkedin } from "@qwikest/icons/tablericons";
 import { component$ } from "@builder.io/qwik";
-import styles from "./styles.module.scss";
 import { Link } from "@builder.io/qwik-city";
 
 export const Footer = component$(() => {
   return (
-    <footer class={styles.container}>
+    <footer>
       <hr />
-      <div class={styles.flex}>
+      <div>
         <div>
-          <p class={styles.text}>It&rsquo;s time to ditch the text file.</p>
+          <p>It&rsquo;s time to ditch the text file.</p>
           <small class="contrast">
             Keep track of your serie easily by creating your own list.
           </small>
         </div>
-        <div class={styles.buttonRow}>
+        <div>
           <Link href="/login/">
             <button class="secondary">Login</button>
           </Link>
@@ -24,9 +23,9 @@ export const Footer = component$(() => {
         </div>
       </div>
       <hr />
-      <div class={styles.alignCenter}>
+      <div>
         <p>Follow me</p>
-        <div class={styles.icons}>
+        <div>
           <Link
             target="_blank"
             href="https://www.linkedin.com/in/luan-henrique-afonso-881154280"

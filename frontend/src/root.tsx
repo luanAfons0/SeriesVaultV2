@@ -3,7 +3,7 @@ import { QwikCityProvider, RouterOutlet } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
 import { Toaster } from "qwik-sonner";
 
-import "./styles/global.scss";
+import "./global.css";
 
 export default component$(() => {
   /**
