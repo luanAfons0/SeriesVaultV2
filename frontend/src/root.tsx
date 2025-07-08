@@ -25,7 +25,7 @@ export default component$(() => {
         )}
         <RouterHead />
       </head>
-      <body lang="en">
+      <body lang="en" class="flex flex-col justify-center">
         <Toaster
           position="top-right"
           toastOptions={{
