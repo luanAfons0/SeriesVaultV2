@@ -7,6 +7,7 @@ import {
   routeLoader$,
   useNavigate,
 } from "@builder.io/qwik-city";
+import styles from "./styles.module.scss";
 import * as v from "valibot";
 import {
   formAction$,
@@ -72,7 +73,7 @@ export default component$(() => {
   });
 
   return (
-    <div>
+    <div class={styles.container}>
       <article>
         <Form onSubmit$={handleSubmit}>
           <header>

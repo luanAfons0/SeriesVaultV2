@@ -9,6 +9,7 @@ import {
 } from "@builder.io/qwik-city";
 import type { InitialValues, SubmitHandler } from "@modular-forms/qwik";
 import { formAction$, useForm, valiForm$ } from "@modular-forms/qwik";
+import styles from "./styles.module.scss";
 import * as v from "valibot";
 import { toast } from "qwik-sonner";
 
@@ -93,7 +94,7 @@ export default component$(() => {
   });
 
   return (
-    <div>
+    <div class={styles.container}>
       <article>
         <Form onSubmit$={handleSubmit}>
           <header>

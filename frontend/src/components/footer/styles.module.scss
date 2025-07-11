@@ -1,0 +1,51 @@
+@use "../../styles/break-points.scss";
+
+.container {
+  h5 {
+    margin: 0;
+  }
+
+  .flex {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: break-points.$breakpoint__lg) {
+      text-align: center;
+    }
+
+    .text {
+      margin: 0;
+    }
+
+    .buttonRow {
+      display: flex;
+      gap: var(--pico-spacing);
+
+      @media (max-width: break-points.$breakpoint__lg) {
+        display: none;
+      }
+    }
+  }
+
+  .alignCenter {
+    text-align: center;
+
+    .icons {
+      display: flex;
+      gap: calc(var(--pico-spacing) / 2);
+      justify-content: center;
+
+      a {
+        text-decoration: none;
+      }
+
+      svg {
+        font-size: 48px;
+
+        @media (max-width: break-points.$breakpoint__lg) {
+          font-size: 32px;
+        }
+      }
+    }
+  }
+}
