@@ -1,7 +1,7 @@
 import { $, component$, useOnDocument, useSignal } from "@builder.io/qwik";
-import styles from "./styles.module.scss";
+import { TbSun, TbMoon, TbMenu2, TbUser } from "@qwikest/icons/tablericons";
 import { Link } from "@builder.io/qwik-city";
-import { TbSun, TbMoon } from "@qwikest/icons/tablericons";
+import styles from "./styles.module.scss";
 
 export const Header = component$(() => {
   const $htmlElement = useSignal<HTMLElement | null>(null);
@@ -34,6 +34,30 @@ export const Header = component$(() => {
   return (
     <header>
       <nav class={styles.container}>
+        <ul class={styles.alignLeft}>
+          <li>
+            <details class="dropdown">
+              <summary>
+                <TbMenu2 />
+              </summary>
+              <ul>
+                <li>
+                  <Link href="/about-us/" aria-label="Go to the about us page">
+                    About us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/find-more/"
+                    aria-label="Go to the find more page"
+                  >
+                    Find more
+                  </Link>
+                </li>
+              </ul>
+            </details>
+          </li>
+        </ul>
         <ul>
           <li>
             <Link href="/" aria-label="Go to the home page">
@@ -43,7 +67,7 @@ export const Header = component$(() => {
             </Link>
           </li>
         </ul>
-        <ul>
+        <ul class={styles.alignRight}>
           <li>
             <button
               class={`${getButtonColor()} ${styles.themeButton}`}
@@ -55,7 +79,9 @@ export const Header = component$(() => {
           </li>
           <li>
             <details class="dropdown">
-              <summary>Account</summary>
+              <summary>
+                <TbUser />
+              </summary>
               <ul dir="rtl">
                 <li>
                   <Link href="/profile/" aria-label="Go to the profile page">

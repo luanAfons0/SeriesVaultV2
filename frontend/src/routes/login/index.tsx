@@ -67,6 +67,11 @@ export default component$(() => {
     }
 
     toast.success("Login successfully!");
+
+    const responseResult = await response.json();
+
+    localStorage.setItem("jwtToken", responseResult.jwtToken);
+
     setTimeout(() => {
       navigate("/");
     }, 1500);
@@ -95,11 +100,9 @@ export default component$(() => {
                     autocomplete="email"
                     aria-describedby="invalid-email"
                     aria-invalid={
-                      field.touched
-                        ? field.error || (field.value as String).length <= 0
-                          ? "true"
-                          : "false"
-                        : "spelling"
+                      field.touched && (field.error || !field.value)
+                        ? true
+                        : false
                     }
                   />
                   {field.error && (

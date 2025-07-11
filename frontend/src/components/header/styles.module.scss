@@ -1,7 +1,8 @@
 .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  position: relative;
 
   h2 {
     margin: 0;
@@ -9,6 +10,27 @@
 
   a {
     text-decoration: none;
+  }
+
+  .alignLeft {
+    position: absolute;
+    left: 0;
+  }
+
+  .alignRight {
+    position: absolute;
+    right: 0;
+  }
+
+  ul details summary,
+  ul li details summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::after {
+      display: none;
+    }
   }
 
   .themeButton {
