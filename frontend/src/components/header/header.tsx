@@ -32,25 +32,52 @@ export const Header = component$(() => {
   };
 
   return (
-    <header class={styles.container}>
-      <Link href="/" aria-label="Go to the home page">
-        <h2>SeriesVault</h2>
-      </Link>
-      <div class={styles.buttonRow}>
-        <Link href="/login/" aria-label="Go to te login page">
-          <button class="secondary">Login</button>
-        </Link>
-        <Link href="/sign-up/" aria-label="Go to the sign up page">
-          <button>Sign up</button>
-        </Link>
-        <button
-          class={`${getButtonColor()} ${styles.themeButton}`}
-          onClick$={() => handleSwitchTheme()}
-          aria-label="changeTheme"
-        >
-          {theme.value == "dark" ? <TbSun /> : <TbMoon />}
-        </button>
-      </div>
+    <header>
+      <nav class={styles.container}>
+        <ul>
+          <li>
+            <Link href="/" aria-label="Go to the home page">
+              <h2>
+                <strong>Series Vault</strong>
+              </h2>
+            </Link>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <button
+              class={`${getButtonColor()} ${styles.themeButton}`}
+              onClick$={() => handleSwitchTheme()}
+              aria-label="changeTheme"
+            >
+              {theme.value == "dark" ? <TbSun /> : <TbMoon />}
+            </button>
+          </li>
+          <li>
+            <details class="dropdown">
+              <summary>Account</summary>
+              <ul dir="rtl">
+                <li>
+                  <Link href="/profile/" aria-label="Go to the profile page">
+                    Profile
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/sign-up/" aria-label="Go to the sign up page">
+                    Sign up
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/login/" aria-label="Go to te login page">
+                    Login
+                  </Link>
+                </li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </nav>
+      <hr />
     </header>
   );
 });

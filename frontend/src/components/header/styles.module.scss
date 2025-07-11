@@ -11,17 +11,11 @@
     text-decoration: none;
   }
 
-  .buttonRow {
+  .themeButton {
     display: flex;
-    gap: var(--pico-spacing);
+    justify-content: center;
     align-items: center;
-
-    .themeButton {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 100%;
-      padding: calc(var(--pico-spacing) / 2);
-    }
+    border-radius: 100%;
+    padding: calc(var(--pico-spacing) / 2);
   }
 }

@@ -8,6 +8,7 @@
   .flex {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     @media (max-width: break-points.$breakpoint__lg) {
       text-align: center;
@@ -30,6 +31,10 @@
   .alignCenter {
     text-align: center;
 
+    p {
+      margin-bottom: 0.5rem;
+    }
+
     .icons {
       display: flex;
       gap: calc(var(--pico-spacing) / 2);
@@ -40,11 +45,7 @@
       }
 
       svg {
-        font-size: 48px;
-
-        @media (max-width: break-points.$breakpoint__lg) {
-          font-size: 32px;
-        }
+        font-size: 32px;
       }
     }
   }
